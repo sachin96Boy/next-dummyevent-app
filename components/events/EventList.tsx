@@ -1,11 +1,11 @@
 import React from "react";
-import {  UnorderedList } from "@chakra-ui/react";
+import { UnorderedList } from "@chakra-ui/react";
 import EventItem from "./EventItem";
 
 function EventList(props: any) {
   const { items } = props;
   return (
-    <UnorderedList>
+    <UnorderedList w={"90%"} maxW={"40rem"}>
       {items.map((event: any) => (
         <EventItem key={event.id} {...event} />
       ))}
