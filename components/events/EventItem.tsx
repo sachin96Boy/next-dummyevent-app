@@ -1,6 +1,9 @@
 import React from "react";
-import { ListItem, Image, Box, Heading } from "@chakra-ui/react";
+import { ListItem, Image, Box, Heading, Flex } from "@chakra-ui/react";
 import CustButton from "../ui/CustButton";
+import { BsCalendarDate } from "react-icons/bs";
+import { GoLocation } from "react-icons/go";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 function EventItem(props: any) {
   const { title, image, date, location, id } = props;
@@ -21,7 +24,7 @@ function EventItem(props: any) {
       display={"flex"}
       flexDirection={"column"}
       gap={"1rem"}
-      justifyContent={"center"}
+      justifyContent={"space-between"}
       alignItems={"center"}
       border={"1px solid"}
     >
@@ -39,11 +42,13 @@ function EventItem(props: any) {
           </Heading>
 
           <Box display={"flex"} gap={"0.5rem"} alignItems="center">
+            <BsCalendarDate />
             <Box as="time" color={"gray.700"} fontWeight="black">
               {readableDate}
             </Box>
           </Box>
           <Box display={"flex"} gap={"0.5rem"} alignItems="center">
+            <GoLocation />
             <Box as="address" my={"0.5rem"} color="gray.700" whiteSpace={"pre"}>
               {formattedAddress}
             </Box>
@@ -54,9 +59,13 @@ function EventItem(props: any) {
           flexDirection="column"
           alignItems={"center"}
           justifyContent="center"
-          my={"1rem"}
         >
-          <CustButton link={exploreLink}>Explore Event</CustButton>
+          <CustButton link={exploreLink}>
+            <Flex align="center" justify={"space-between"} gap={2}>
+              Explore Event
+              <FaLongArrowAltRight />
+            </Flex>
+          </CustButton>
         </Box>
       </Box>
     </ListItem>

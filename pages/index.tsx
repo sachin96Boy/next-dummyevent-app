@@ -5,8 +5,8 @@ import EventList from "../components/events/EventList";
 export default function Home() {
   const featuredEvents = getFeaturedEvents();
   return (
-    <Box bgColor={"blackAlpha.400"}>
-      <Container my={10}>
+    <Box bgColor={"blackAlpha.400"} h="100vh" overflowY={"scroll"}>
+      <Container>
         <EventList items={featuredEvents} />
       </Container>
     </Box>
