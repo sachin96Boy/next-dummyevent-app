@@ -26,7 +26,6 @@ function EventDetailPage() {
       flexDirection="column"
       alignItems={"center"}
       justifyContent="space-between"
-      h={"100vh"}
       bgGradient={"linear(to-r, gray.400,white)"}
     >
       <EventSummery title={event?.title} />
