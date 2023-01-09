@@ -1,18 +1,23 @@
-import { Box, Container, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import EventList from "../../components/events/EventList";
+import CustButton from "../../components/ui/CustButton";
 import { getFilteredEvents } from "../../dummy-data";
 
 function FilteredEventsPage() {
   const router = useRouter();
   const filterData = router.query.slug;
-   
+
   const filteredYear = filterData && filterData[0];
   const filteredMonth = filterData && filterData[1];
 
   const numYear = +`${filteredYear}`;
   const numMonth = +`${filteredMonth}`;
+
+  const handleBackToAllEvents = () => {
+    router.push("/events");
+  };
 
   const filteredEvents = getFilteredEvents({
     year: numYear,
@@ -21,8 +26,17 @@ function FilteredEventsPage() {
 
   if (!filteredEvents || filteredEvents.length === 0) {
     return (
-      <Box>
-        <Text>No events found for the chosen filter</Text>
+      <Box h={"100vh"}>
+        <Flex align={"center"} justify="center" flexDirection={"column"}>
+          <Box>
+            <CustButton onClick={handleBackToAllEvents}>
+              Back to All Events
+            </CustButton>
+          </Box>
+          <Text fontWeight={"bold"} fontSize="24px" textAlign={"center"}>
+            No events found for the chosen filter
+          </Text>
+        </Flex>
       </Box>
     );
   }
@@ -36,8 +50,17 @@ function FilteredEventsPage() {
     numMonth > 12
   ) {
     return (
-      <Box>
-        <Text>Invalid Filter. Please adjust your values</Text>
+      <Box h="100vh">
+        <Flex align={"center"} justify="center" flexDirection={"column"}>
+          <Box>
+            <CustButton onClick={handleBackToAllEvents}>
+              Back to All Events
+            </CustButton>
+          </Box>
+          <Text fontWeight={"bold"} fontSize="24px" textAlign={"center"}>
+            Invalid Filter. Please adjust your values
+          </Text>
+        </Flex>
       </Box>
     );
   }
@@ -52,7 +75,9 @@ function FilteredEventsPage() {
 
   return (
     <Container>
-      <Text>Filtered Events</Text>
+      <Text fontWeight={"bold"} fontSize="24px" textAlign={"center"}>
+        Filtered Events
+      </Text>
       <EventList items={filteredEvents} />
     </Container>
   );
