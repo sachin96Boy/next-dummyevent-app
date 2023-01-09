@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Text } from "@chakra-ui/react";
+import { Box, Center, Container, Flex, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import EventList from "../../components/events/EventList";
@@ -74,12 +74,14 @@ function FilteredEventsPage() {
   }
 
   return (
-    <Container>
+    <Box h="100vh">
       <Text fontWeight={"bold"} fontSize="24px" textAlign={"center"}>
         Filtered Events
       </Text>
-      <EventList items={filteredEvents} />
-    </Container>
+      <Center>
+        <EventList items={filteredEvents} />
+      </Center>
+    </Box>
   );
 }
 
