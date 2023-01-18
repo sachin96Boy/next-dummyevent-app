@@ -69,6 +69,7 @@ export async function getStaticProps(context: any) {
   return {
     // Passed to the page component as props
     props: { event },
+    revalidate: 30,
   };
 }
 
