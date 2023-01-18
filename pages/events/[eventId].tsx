@@ -1,4 +1,5 @@
 import { Box, Container, Text } from "@chakra-ui/react";
+import axios from "axios";
 import { useRouter } from "next/router";
 import React from "react";
 import EventContent from "../../components/event-details/EventContent";
@@ -6,11 +7,11 @@ import EventLogistics from "../../components/event-details/EventLogistics";
 import EventSummery from "../../components/event-details/EventSummery";
 import { getEventById } from "../../dummy-data";
 
-function EventDetailPage() {
-  const router = useRouter();
-  const { eventId } = router.query;
+function EventDetailPage(props:any) {
+  // const router = useRouter();
+  // const { eventId } = router.query;
 
-  const event = getEventById(eventId as string);
+  const { event } =  props;
 
   if (!event) {
     return (
@@ -40,6 +41,33 @@ function EventDetailPage() {
       </EventContent>
     </Box>
   );
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { eventId: "e1" } },
+      { params: { eventId: "e2" } },
+      { params: { eventId: "e3" } },
+    ],
+    fallback: false, // can also be true or 'blocking'
+  };
+}
+
+// `getStaticPaths` requires using `getStaticProps`
+export async function getStaticProps(context: any) {
+  let { params } = context;
+  const { eventId } = params;
+  const res = await axios.get(
+    `${process.env.REACT_APP_REALTIME_DATABASE}/0/events.json`
+  );
+  const posts = await res.data;
+  const event = posts.find((newEvent: any) => newEvent.id === eventId);
+
+  return {
+    // Passed to the page component as props
+    props: { event },
+  };
 }
 
 export default EventDetailPage;
