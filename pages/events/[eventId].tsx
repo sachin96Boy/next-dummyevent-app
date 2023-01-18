@@ -7,11 +7,11 @@ import EventLogistics from "../../components/event-details/EventLogistics";
 import EventSummery from "../../components/event-details/EventSummery";
 // import { getEventById } from "../../dummy-data";
 
-function EventDetailPage(props:any) {
+function EventDetailPage(props: any) {
   // const router = useRouter();
   // const { eventId } = router.query;
 
-  const { event } =  props;
+  const { event } = props;
 
   if (!event) {
     return (
@@ -44,12 +44,14 @@ function EventDetailPage(props:any) {
 }
 
 export async function getStaticPaths() {
+  const res = await axios.get(
+    `${process.env.REACT_APP_REALTIME_DATABASE}/0/events.json`
+  );
+  const events = await res.data;
+  const paths = events.map((event: any) => ({ params: { eventId: event.id } }));
+
   return {
-    paths: [
-      { params: { eventId: "e1" } },
-      { params: { eventId: "e2" } },
-      { params: { eventId: "e3" } },
-    ],
+    paths: paths,
     fallback: false, // can also be true or 'blocking'
   };
 }
