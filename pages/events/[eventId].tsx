@@ -1,11 +1,11 @@
-import { Box, Container, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import axios from "axios";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import React from "react";
 import EventContent from "../../components/event-details/EventContent";
 import EventLogistics from "../../components/event-details/EventLogistics";
 import EventSummery from "../../components/event-details/EventSummery";
-import { getEventById } from "../../dummy-data";
+// import { getEventById } from "../../dummy-data";
 
 function EventDetailPage(props:any) {
   // const router = useRouter();

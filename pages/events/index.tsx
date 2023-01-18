@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React from 'react'
 import EventList from '../../components/events/EventList';
 import EventsSearch from '../../components/events/EventsSearch';
-import { getAllEvents } from '../../dummy-data'
+// import { getAllEvents } from '../../dummy-data'
 
 function AllEventsPage(props:any) {
   const { allEvents } = props;
