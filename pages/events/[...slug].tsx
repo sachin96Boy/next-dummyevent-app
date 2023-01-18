@@ -1,4 +1,4 @@
-import { Box, Center, Container, Flex, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 import EventList from "../../components/events/EventList";
@@ -84,5 +84,7 @@ function FilteredEventsPage() {
     </Box>
   );
 }
+
+
 
 export default FilteredEventsPage;
