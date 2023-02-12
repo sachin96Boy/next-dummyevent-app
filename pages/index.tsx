@@ -1,5 +1,5 @@
 import { Box, Container } from "@chakra-ui/react";
-import { getFeaturedEvents } from "../dummy-data";
+// import { getFeaturedEvents } from "../dummy-data";
 import EventList from "../components/events/EventList";
 import axios from "axios";
 
