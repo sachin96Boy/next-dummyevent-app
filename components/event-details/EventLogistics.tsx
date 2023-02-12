@@ -1,4 +1,10 @@
-import { Box, Container, Image, UnorderedList } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Image as ImageBox,
+  UnorderedList,
+} from "@chakra-ui/react";
+import Image from "next/image";
 import React from "react";
 import LogisticsItem from "./LogisticsItem";
 
@@ -41,7 +47,8 @@ function EventLogistics(props: any) {
         border={"5px solid"}
         borderColor={"gray.400"}
       >
-        <Image
+        <ImageBox
+          // as={Image}
           objectFit={"cover"}
           w="10rem"
           h={"10rem"}

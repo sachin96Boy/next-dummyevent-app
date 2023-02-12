@@ -1,5 +1,12 @@
 import React from "react";
-import { ListItem, Image, Box, Heading, Flex } from "@chakra-ui/react";
+import Image from "next/image";
+import {
+  ListItem,
+  Image as ImageBox,
+  Box,
+  Heading,
+  Flex,
+} from "@chakra-ui/react";
 import CustButton from "../ui/CustButton";
 import { BsCalendarDate } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
@@ -28,7 +35,8 @@ function EventItem(props: any) {
       alignItems={"center"}
       border={"1px solid"}
     >
-      <Image
+      <ImageBox
+        // as={Image}
         src={"/" + image}
         alt={title}
         w={"full"}
