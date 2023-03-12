@@ -5,6 +5,7 @@ import React from "react";
 import EventContent from "../../components/event-details/EventContent";
 import EventLogistics from "../../components/event-details/EventLogistics";
 import EventSummery from "../../components/event-details/EventSummery";
+import Comments from "../../components/input/Comments";
 // import { getEventById } from "../../dummy-data";
 
 function EventDetailPage(props: any) {
@@ -39,6 +40,7 @@ function EventDetailPage(props: any) {
       <EventContent>
         <Text fontWeight={"bold"}>{event?.description}</Text>
       </EventContent>
+      <Comments eventId={event.id} />
     </Box>
   );
 }
