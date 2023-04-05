@@ -14,6 +14,9 @@ export default function handler(
             });
             return;
         }
-        console.log(userEmail)
+        console.log(userEmail);
+        res.status(200).json({
+            message: "Signed UP"
+        });
     }
 }
