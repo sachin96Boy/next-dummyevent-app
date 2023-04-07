@@ -50,6 +50,7 @@ function NewComment(props: any) {
       borderRadius={"6px"}
       padding="1rem"
       boxShadow={"lg"}
+      onSubmit={sendCommentHandler}
     >
       <Box className="row" display={"flex"} gap={"1rem"} flexWrap={"wrap"}>
         <FormControl>
@@ -90,7 +91,7 @@ function NewComment(props: any) {
         <Textarea id="name" rows={5} ref={commentInputRef} />
       </FormControl>
       {isInvalid && <Text>Please enter a valid email and a Comment</Text>}
-      <Button my={2}>Submit Content</Button>
+      <Button my={2} type={"submit"}>Submit Content</Button>
     </Box>
   );
 }
